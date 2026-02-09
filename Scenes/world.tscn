@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dabuc4bnpnq2k"]
+
+[ext_resource type="Texture2D" uid="uid://dx4pbabk18ion" path="res://Sprites/tileset.png" id="1_j0p05"]
+[ext_resource type="Script" uid="uid://brkcfb3px7oi3" path="res://Scripts/dungeon_generator.gd" id="2_5nsto"]
+[ext_resource type="PackedScene" uid="uid://dls2t6maeqcg7" path="res://Scenes/player.tscn" id="3_5a7ea"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjpho"]
+texture = ExtResource("1_j0p05")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_p70al"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gjpho")
+
+[node name="World" type="Node" unique_id=826483377]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=593788495]
+tile_set = SubResource("TileSet_p70al")
+
+[node name="DungeonGenerator" type="Node" parent="." unique_id=1032217461 node_paths=PackedStringArray("tile_map_layer", "player")]
+script = ExtResource("2_5nsto")
+tile_map_layer = NodePath("../TileMapLayer")
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=755917354 instance=ExtResource("3_5a7ea")]
